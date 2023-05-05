@@ -9,27 +9,27 @@ const Header = () => {
 				
 				<img className="w-72" src={IconoImagen} alt=""/>
 
-				<div className="w-96">
-					<input type="text" name="" placeholder="Escribe nombre de pokemon..." id="" />
-					<Icon icon="ph:magnifying-glass-bold" color="white" width="30" />
+				<div className="w-96 flex items-center">
+					<input className="w-10/12 h-9 rounded-xl px-3" type="text" name="" placeholder="Escribe nombre de pokemon..." id="" />
+					<Icon className="relative" icon="ph:magnifying-glass-bold" color="white" width="30" />
 				</div>
 
 				<div className="grid grid-cols-2 grid-rows-2">
 					<div className="flex mx-4 items-center">
-						<Icon icon="ion:logo-facebook" color="white" width="34" />
-						<span className="text-sm">Sigueme en facebook</span>
+						<Icon icon="ion:logo-facebook" color="white" width="25" />
+						<h3 className="text-sm text-white ml-1">Sigueme en facebook</h3>
 					</div>
 					<div className="flex mx-4 items-center">
-						<Icon icon="ph:linkedin-logo-fill" color="white" width="38" />
-						<span className="text-sm">Sigueme en Linkedin</span>
+						<Icon icon="ph:linkedin-logo-fill" color="white" width="28" />
+						<h3 className="text-sm text-white ml-1">Sigueme en Linkedin</h3>
 					</div>
 					<div className="flex mx-4 items-center">
-						<Icon icon="iconoir:figma" color="white" width="36" />
-						<span className="text-sm">Sigueme en Figma</span>
+						<Icon icon="iconoir:figma" color="white" width="28" />
+						<h3 className="text-sm text-white ml-1">Sigueme en Figma</h3>
 					</div>
 					<div className="flex mx-4 items-center">
-						<Icon icon="radix-icons:github-logo" color="white" width="29" />
-						<span className="text-sm">Sigueme en GitHub</span>
+						<Icon icon="radix-icons:github-logo" color="white" width="23" />
+						<h3 className="text-sm text-white ml-1">Sigueme en GitHub</h3>
 					</div>
 				</div>
 			</div>

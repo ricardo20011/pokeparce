@@ -4,10 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    colors: {
-      'azulOscuro': 'rgb(3 7 18 / 90%)',
-    },
     extend: {
+      spacing: {
+        'n-15' : '-15px',
+      },
+      colors: {
+        'azulOscuro': 'rgb(3 7 18 / 90%)',
+      },
       height: {
         '18' : '4.5rem',
       },
