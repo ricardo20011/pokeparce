@@ -13,12 +13,18 @@ module.exports = {
     extend: {
       spacing: {
         'n-15' : '-15px',
+        'cardX' : 'calc(50% - 200px)',
+        'cardY' : 'calc(50% - 272px)',
       },
       colors: {
         'azulOscuro': 'rgb(3 7 18 / 70%)',
       },
       height: {
         '18' : '4.5rem',
+        '130' : '34rem'
+      },
+      width: {
+        '110' : '25rem',
       },
     },
   },
