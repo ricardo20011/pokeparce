@@ -14,14 +14,14 @@ module.exports = {
       spacing: {
         'n-15' : '-15px',
         'cardX' : 'calc(50% - 200px)',
-        'cardY' : 'calc(50% - 272px)',
+        'cardY' : 'calc(50% - 304px)',
       },
       colors: {
         'azulOscuro': 'rgb(3 7 18 / 70%)',
       },
       height: {
         '18' : '4.5rem',
-        '130' : '34rem'
+        '130' : '38rem'
       },
       width: {
         '110' : '25rem',

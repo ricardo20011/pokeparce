@@ -4,13 +4,13 @@ import CardFinal from "./CardFinal";
 
 
 const Card = (props) => {
-	const [pokemon, setPokemon] = useState(false);
+	const [mostrarPokemon, setMostrarPokemon] = useState(false);
 	
 	const validarInf = () => {
 		props.pokemon.map((pokemon)=>{
 			if(props.id === pokemon.data.id){
 				return(
-					setPokemon(pokemon.data)
+					setMostrarPokemon(pokemon.data)
 					);
 				}
 			}
@@ -26,7 +26,7 @@ const Card = (props) => {
 				<p className="text-lg font-semibold text-gray-800">{props.name}</p>
 				{props.ability}
 			</div>
-			{pokemon != false ? <CardFinal data={pokemon} /> : true}
+			{mostrarPokemon === false ? true : <CardFinal data={mostrarPokemon} />}
 		</>
 	);
 }

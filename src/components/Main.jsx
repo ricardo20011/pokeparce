@@ -16,7 +16,7 @@ const Main = () => {
 	//}
 
 	useEffect(()=>{
-		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=0`)
+		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=50`)
 		.then((respuesta)=>{
 			if(respuesta.status === 200){
 				//console.log(respuesta);
@@ -37,7 +37,6 @@ const Main = () => {
 			})
 		},[]);
 		
-	
 
   return(
     <div className="w-10/12 mx-auto flex flex-col items-end pt-20 box-border">
@@ -56,7 +55,7 @@ const Main = () => {
 									img = {pokemonInfo.data.sprites.other.dream_world.front_default}
 									name = {pokemonInfo.data.name}
 									ability = { 
-										pokemonInfo.data.abilities.length != 1 
+										pokemonInfo.data.abilities.length !== 1
 										? 
 										<>
 											<Habilidad habilidad={pokemonInfo.data.abilities[0].ability.name} />
