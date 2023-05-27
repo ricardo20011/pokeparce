@@ -26,7 +26,7 @@ const Card = (props) => {
 				<p className="text-lg font-semibold text-gray-800">{props.name}</p>
 				{props.ability}
 			</div>
-			{mostrarPokemon === false ? true : <CardFinal data={mostrarPokemon} />}
+			{mostrarPokemon === false ? true : <CardFinal mostrarPokemon={setMostrarPokemon} data={mostrarPokemon} />}
 		</>
 	);
 }

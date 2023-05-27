@@ -16,7 +16,7 @@ const Main = () => {
 	//}
 
 	useEffect(()=>{
-		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=50`)
+		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`)
 		.then((respuesta)=>{
 			if(respuesta.status === 200){
 				//console.log(respuesta);
@@ -29,7 +29,6 @@ const Main = () => {
 						//console.log(pokemonData);
 					})
 					.catch(error => console.log(error))
-
 				}
 			})
 			.catch((error)=>{

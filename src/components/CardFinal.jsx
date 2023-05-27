@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import SombraPokemon from '../img/sombra.svg';
 import { Icon } from '@iconify/react';
 import axios from "axios";
 import Habilidades from "./Habilidades";
-
+import fondoCardPokemon from '../img/fondoCardPokemon.png';
+import sombraPokemon from '../img/sombra.svg';
 
 const CardFinal = (props) => {
 	
@@ -24,6 +24,8 @@ const CardFinal = (props) => {
 	const [especie, setEspecie] = useState(false);
 	const [habilidad, setHabilidad] = useState(false);
 	const [nombreEspecie, setNombreEspecie] = useState(false);
+	const [debilidad, setDebilidad] = useState(false);
+	const [descripcionAtaque, setDescripcionAtaque] = useState(false);
 	
 	useEffect(()=>{
 		axios.get(props.data.species.url)
@@ -34,9 +36,17 @@ const CardFinal = (props) => {
 		const habilidades = props.data.abilities.map((rest)=> axios.get(rest.ability.url));
 		Promise.all(habilidades)
 		.then((respuesta)=>{
+			//respuesta.map((habilidad)=>{
+			//	habilidad.data.flavor_text_entries.map((idioma)=>{
+			//		if(idioma.language.name === 'es'){
+			//			setHabilidad(idioma.flavor_text);
+			//			console.log('hola');
+			//		}
+			//	})
+			//});
 			setHabilidad(respuesta);
+			//console.log(respuesta);
 		})
-
 	},[])
 
 	useEffect(()=>{
@@ -47,14 +57,37 @@ const CardFinal = (props) => {
 					}
 				});
 			}
-		})
-		
-	console.log(especie);
+
+			axios.get(props.data.types[0].type.url)
+			.then((respuesta)=>{
+				setDebilidad(respuesta.data.damage_relations.double_damage_from[0].name);
+			})
+			.catch(err => console.log(err))
+
+			axios.get(props.data.moves[0].move.url)
+			.then((respuesta)=>{
+				respuesta.data.flavor_text_entries.map((idioma)=>{
+					if(idioma.language.name === 'es'){
+						setDescripcionAtaque(idioma.flavor_text);
+					}
+				});
+			})
+		}
+	)
+	const cerrarTarjeta = () => {
+		props.mostrarPokemon(false);
+	}
+	//console.log(props.data);
 
   return(
 		<>
 			<div className="fixed z-30 left-cardX top-cardY h-130 w-110 p-5 bg-[#34d399] rounded-md">
-				<div className="relative flex flex-col justify-between h-full border-solid border-[1px] border-[#ca8a04] rounded-lg">
+				<div className="relative w-full flex flex-col justify-between h-full border-solid border-[1px] border-[#ca8a04] rounded-lg">
+					<div className="bg-[#136f4d] w-8 h-8 rounded-full absolute right-[-35px] top-[-32px] flex justify-center items-center cursor-pointer hover:bg-[#0a442f] "
+						onClick={cerrarTarjeta}
+					>
+						<Icon icon="pajamas:close" color="white" width="20" />
+					</div>
 					<div className="flex justify-between items-center my-1 relative left-[-10px]">
 						<button className="bg-[#fafafa] rounded-xl px-5 font-bold">{tipo}</button>
 						<p className="font-bold mx-2">{nombreMayusculas}</p>
@@ -65,8 +98,9 @@ const CardFinal = (props) => {
 					</div>
 
 					<div className="w-full flex flex-col items-center">
-						<div className="bg- h-56 flex justify-center items-center w-10/12 mx-auto rounded-md border-2 border-solid border-[#996b08]">
-							<img className="w-8/12 max-h-48" src={props.data.sprites.other.dream_world.front_default} alt="" />
+						<div  style={{ backgroundImage: `url(${fondoCardPokemon})` }} className="relative h-[200px] flex justify-center items-center w-10/12 mx-auto rounded-md border-2 border-solid border-[#996b08] bg-contain bg-no-repeat ">
+							<img className="w-6/12 max-h-48" src={props.data.sprites.other.dream_world.front_default} alt="" />
+							<img src={sombraPokemon} className="absolute bottom-2"/>
 						</div>
 						<div className="w-9/12 bg-[#115e59] text-center rounded-b-md">
 							<p className="text-[9px] py-1 text-white">Peso: {props.data.weight}kg Altura: {altura}cm Especie: {nombreEspecie !== false ? nombreEspecie : false} Nº{props.data.id}</p>
@@ -95,11 +129,11 @@ const CardFinal = (props) => {
 
 
 					<div className="relative left-[-10px] flex justify-between">
-						<button className="bg-[#fafafa] rounded-xl text-[11px] px-5">Habitad: {especie !== false ?especie.data.habitat.name : false} Resistencia: Nombre</button>
-						<button className="bg-[#fafafa] rounded-xl text-[11px] px-5">Retirada</button>
+						<button className="bg-[#fafafa] rounded-xl text-[11px] px-5">Habitad: {especie !== false ?especie.data.habitat.name : false} Debilidad: {debilidad !== false ? debilidad : false}</button>
+						<button className="bg-[#fafafa] rounded-xl text-[11px] px-5">{props.data.moves[0].move.name}</button>
 					</div>
 
-					<div className="w-full flex">
+					<div className="w-full flex justify-between">
 						<div className="flex flex-col w-4/12 mx-4">
 							<p className="text-sm">Ilus: Varon - Rick</p>
 							<div className="flex  items-center">
@@ -110,7 +144,7 @@ const CardFinal = (props) => {
 						</div>
 
 						<div className="w-8/12 mx-2 my-1">
-							<p className="text-[10px]">Descripcion de un ataque del pokemon dependiendo lo que diga la API, los pokemones 	tienen de una a dos habilidades por mostrar.</p>
+							<p className="text-[10px]">{descripcionAtaque !== false ? descripcionAtaque : false}</p>
 						</div>
 					</div>
 				</div>
