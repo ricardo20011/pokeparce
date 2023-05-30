@@ -2,7 +2,7 @@ import React from "react";
 
 const Barra = (props) => {
   return(
-		<div className="my-10">
+		<div className="my-2">
 			<p className="text-lg font-bold text-gray-700">{props.title}</p>
 			<p>{props.parrafo1}</p>
 			<p>{props.parrafo2}</p>

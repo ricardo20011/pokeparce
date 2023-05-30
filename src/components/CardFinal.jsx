@@ -74,17 +74,16 @@ const CardFinal = (props) => {
 			})
 		}
 	)
-	const cerrarTarjeta = () => {
-		props.mostrarPokemon(false);
-	}
-	//console.log(props.data);
 
+	//console.log(props.data);
+	const [loading, setLoading] = useState(true);
   return(
 		<>
+			<div className="fixed left-0 top-0 w-full h-full bg-[#00000074] z-30"></div>
 			<div className="fixed z-30 left-cardX top-cardY h-130 w-110 p-5 bg-[#34d399] rounded-md">
 				<div className="relative w-full flex flex-col justify-between h-full border-solid border-[1px] border-[#ca8a04] rounded-lg">
 					<div className="bg-[#136f4d] w-8 h-8 rounded-full absolute right-[-35px] top-[-32px] flex justify-center items-center cursor-pointer hover:bg-[#0a442f] "
-						onClick={cerrarTarjeta}
+						onClick={()=>props.mostrarPokemon(false)}
 					>
 						<Icon icon="pajamas:close" color="white" width="20" />
 					</div>
@@ -99,8 +98,17 @@ const CardFinal = (props) => {
 
 					<div className="w-full flex flex-col items-center">
 						<div  style={{ backgroundImage: `url(${fondoCardPokemon})` }} className="relative h-[200px] flex justify-center items-center w-10/12 mx-auto rounded-md border-2 border-solid border-[#996b08] bg-contain bg-no-repeat ">
-							<img className="w-6/12 max-h-48" src={props.data.sprites.other.dream_world.front_default} alt="" />
-							<img src={sombraPokemon} className="absolute bottom-2"/>
+							{loading && <Icon className="loading-icon" icon="eos-icons:bubble-loading" color="green" width="50" />}
+							<img 
+								className="w-6/12 max-h-48 z-20" 
+								src={
+									props.data.sprites.other.dream_world.front_default
+								} 
+								onLoad={() => setLoading(false)}
+								alt="" 
+								style={{ display: loading ? 'none' : 'block' }}
+								/>
+							<img src={sombraPokemon} className="absolute bottom-2 z-10"/>
 						</div>
 						<div className="w-9/12 bg-[#115e59] text-center rounded-b-md">
 							<p className="text-[9px] py-1 text-white">Peso: {props.data.weight}kg Altura: {altura}cm Especie: {nombreEspecie !== false ? nombreEspecie : false} Nº{props.data.id}</p>

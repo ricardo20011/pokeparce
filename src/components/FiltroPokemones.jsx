@@ -6,26 +6,112 @@ import Boton from './Boton';
 
 const FiltroPokemones = (props) => {
   return(
-    <div className="w-4/12 p-8 box-border">
+    <div className="w-4/12 px-8 box-border">
 					<p className="text-lg mb-5 font-bold text-gray-700">Filtros para los pokeparces:</p>
 					
 					<ContenedorBoton title="Tipo:" >
-						<Boton name="Normal" />
-						<Boton name="Fighting" />
-						<Boton name="Flying" />
-						<Boton name="Poison" />
-						<Boton name="Ground" />
-						<Boton name="Rock" />
-						<Boton name="Ghost" />
-						<Boton name="Steel" />
-						<Boton name="Fire" />
-						<Boton name="Water" />
-						<Boton name="Grass" />
-						<Boton name="Electric" />
-						<Boton name="Ice" />
-						<Boton name="Dragon" />
-						<Boton name="Dark" />
-						<Boton name="Fairy" />
+						<Boton 
+							name="Mostrar Todos"
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="pokemon/"
+						/>
+						<Boton
+							name="Normal" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/normal/"
+						/>
+						<Boton 
+							name="Fighting"
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/fighting/"
+						/>
+						<Boton
+							name="Flying" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/flying/"
+						/>
+						<Boton
+							name="Poison" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/poison/"
+						/>
+						<Boton
+							name="Ground" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/ground/"
+						/>
+						<Boton
+							name="Rock" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/rock/"
+						/>
+						<Boton
+							name="Ghost" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/ghost/"
+						/>
+						<Boton
+							name="Steel" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/steel/"
+						/>
+						<Boton
+							name="Fire" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/fire/"
+						/>
+						<Boton
+							name="Water" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/water/"
+						/>
+						<Boton
+							name="Grass" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/grass/"
+						/>
+						<Boton
+							name="Electric" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/electric/"
+						/>
+						<Boton
+							name="Ice" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/ice/"
+						/>
+						<Boton
+							name="Dragon" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/dragon/"
+						/>
+						<Boton
+							name="Dark" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/dark/"
+						/>
+						<Boton
+							name="Fairy" 
+							setTipoPokemon={props.setTipoPokemon} 
+							tipoPokemon={props.tipoPokemon}
+							tipo="type/fairy/"
+						/>
 					</ContenedorBoton>
 
 					<ContenedorBoton title="Region:">
