@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0f674e78.css",
+    "main.js": "/static/js/main.387e846b.js",
+    "static/media/fondoCardPokemon.png": "/static/media/fondoCardPokemon.6499d205c81aa6f2f0b1.png",
+    "static/media/IconoHeader.png": "/static/media/IconoHeader.6c757b25890d3ab76279.png",
+    "index.html": "/index.html",
+    "static/media/sombra.svg": "/static/media/sombra.200969921910f7eabb765b8ac3d386e5.svg",
+    "main.0f674e78.css.map": "/static/css/main.0f674e78.css.map",
+    "main.387e846b.js.map": "/static/js/main.387e846b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f674e78.css",
+    "static/js/main.387e846b.js"
+  ]
+}
