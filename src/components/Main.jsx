@@ -9,59 +9,45 @@ import Habilidad from "./Habilidad";
 
 const Main = () => {
 	const [pokemon, setPokemon] = useState([]);
-	const [pokemonInicio, setPokemonInicio] = useState(0);
-	const [pokemonesPagina, setPokemonesPagina] = useState(6);
 
-	const [pokemonInicioTipo, setPokemonInicioTipo] = useState(pokemonesPagina);
+
+  const [paginaActual, setPaginaActual] = useState(1);
+	const [pokemonesPorPagina, setPokemonesPorPagina] = useState(6);
 	
-
-
-	const [tipoPokemon, setTipoPokemon] = useState('pokemon/')
-
+	const [tipoPokemon, setTipoPokemon] = useState('pokemon/');
+  
+  const indexUltimoPokemon = paginaActual * pokemonesPorPagina;
+  const indexPrimerPokemon = indexUltimoPokemon - pokemonesPorPagina;
+  const pokemones = pokemon?.slice(indexPrimerPokemon, indexUltimoPokemon);
 
 
 	useEffect(()=>{
-		axios.get(`https://pokeapi.co/api/v2/${tipoPokemon}?limit=${pokemonesPagina}&offset=${pokemonInicio}`)
+		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${indexUltimoPokemon}&offset=${indexPrimerPokemon}`)
 		.then((respuesta)=>{
 			if(respuesta.data && respuesta.data.results){
-				console.log('trae resultados de todos los pokemones');
 				if(respuesta.status === 200){
-					console.log(respuesta);
 					const pokemonUrl = respuesta.data.results.map((pokemon) => axios.get(pokemon.url));
-					//console.log(pokemonUrl);
 	
 					Promise.all(pokemonUrl)
 						.then((respuesta)=>{
 							setPokemon(respuesta);
-							//console.log(pokemonData);
-						})
+						})  
 						.catch(error => console.log(error))
-					}
-			} else if (respuesta.data && respuesta.data.pokemon){
-				//console.log(respuesta);
-
-				const tipoPokemonesPagina = respuesta.data.pokemon.slice(pokemonInicio, pokemonInicioTipo).map(pokemon => axios.get(pokemon.pokemon.url));
-
-				console.log(respuesta.data.pokemon.slice(pokemonInicio, pokemonInicioTipo));
-				console.log(pokemonInicio);
-				console.log(pokemonInicioTipo);
-
-				Promise.all(tipoPokemonesPagina)
-					.then((respuesta)=>{
-						setPokemon(respuesta);
-					})
-					.catch(error => console.log(error));
-			}
-			})
+					}  
+			}})    
 			.catch((error)=>{
 				console.log(error);
-			})
-	},[pokemonInicio,pokemonesPagina,tipoPokemon,pokemonInicioTipo]);
+			})  
+	},[tipoPokemon,indexUltimoPokemon,indexPrimerPokemon]);    
 	
+  console.log(pokemon);
+
+
 	
 	const handleInputPokemonPagina = (e) => {
-		setPokemonesPagina(parseInt(e.target.value));
-		setPokemonInicioTipo(parseInt(e.target.value));
+    setPokemonesPorPagina(e.target.value)
+		//setPokemonesPagina(parseInt(e.target.value));
+		//setPokemonInicioTipo(parseInt(e.target.value));
 		//console.log(pokemonesPagina);
 	}
 
@@ -79,7 +65,7 @@ const Main = () => {
 						<p className="mr-2">Pokemones a mostrar:</p>
 						<select 
 							className="border-2 border-blue-500 bg-transparent rounded-md px-2 py-[2px] pr-4"
-							value={pokemonesPagina} 
+							value={pokemonesPorPagina} 
 							onChange={(e)=>handleInputPokemonPagina(e)}
 						>
 							<option value={3}>3</option>
@@ -91,7 +77,7 @@ const Main = () => {
 					</div>
 					<div className="w-full flex flex-wrap content-start justify-between">
 						{
-							pokemon.map((pokemonInfo)=>{
+							pokemones.map((pokemonInfo)=>{
 								return(
 									<Card
 										pokemon={pokemon}
@@ -120,20 +106,14 @@ const Main = () => {
 
 			<div className="w-8/12 flex justify-center pb-44">
 				<BotonAnterior 
-					name="Pagina Anterior" 
-					setPokemonInicio={setPokemonInicio} 
-					pokemonInicio={pokemonInicio}
-					pokemonesPorPagina={pokemonesPagina}
-					setPokemonInicioTipo={setPokemonInicioTipo} 
+					name="Pagina Anterior"
+          paginaActual={paginaActual}
+          setPaginaActual={setPaginaActual}
 				/>
 				<BotonSiguiente 
-					name="Pagina Siguiente" 
-					setPokemonInicio={setPokemonInicio} 
-					pokemonInicio={pokemonInicio}
-					pokemonesPorPagina={pokemonesPagina}
-					setPokemonInicioTipo={setPokemonInicioTipo} 
-					//etPokemonInicioTipo={setPokemonInicioTipo}
-					//etPokemonInicioTipoPagina={setPokemonInicioTipoPagina}
+					name="Pagina Siguiente"
+          paginaActual={paginaActual}
+          setPaginaActual={setPaginaActual}
 				/>
 			</div>
 		</div>

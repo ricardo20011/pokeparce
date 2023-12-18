@@ -1,15 +1,11 @@
 import React from "react";
 
 
-const Boton = (props) => {
-
-	const handleTipoPokemon = (tipo) => {
-		props.setTipoPokemon(tipo)
-	}
+const Boton = ({name,setTipoPokemon,tipo}) => {
 
 	return(
 		<button 
-			onClick={()=>handleTipoPokemon(props.tipo)} 
+			onClick={()=>setTipoPokemon(tipo)} 
 			className="
 				focus:border-transparent 
 				focus:bg-blue-400 border-2 
@@ -26,7 +22,7 @@ const Boton = (props) => {
 				ease-in-out 
 				duration-200"
 			>
-				{props.name}
+				{name}
 			</button>
 	);
 }

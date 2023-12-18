@@ -9,10 +9,9 @@ const Card = (props) => {
 	const validarInf = () => {
 		props.pokemon.map((pokemon)=>{
 			if(props.id === pokemon.data.id){
-				return(
-					setMostrarPokemon(pokemon.data)
-					);
+					setMostrarPokemon(pokemon.data);
 				}
+        return undefined;
 			}
 		);
 	}

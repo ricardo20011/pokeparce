@@ -12,104 +12,87 @@ const FiltroPokemones = (props) => {
 					<ContenedorBoton title="Tipo:" >
 						<Boton 
 							name="Mostrar Todos"
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="pokemon/"
 						/>
 						<Boton
 							name="Normal" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/normal/"
 						/>
 						<Boton 
 							name="Fighting"
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/fighting/"
 						/>
 						<Boton
 							name="Flying" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/flying/"
 						/>
 						<Boton
 							name="Poison" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/poison/"
 						/>
 						<Boton
 							name="Ground" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/ground/"
 						/>
 						<Boton
 							name="Rock" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/rock/"
 						/>
 						<Boton
 							name="Ghost" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/ghost/"
 						/>
 						<Boton
 							name="Steel" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/steel/"
 						/>
 						<Boton
 							name="Fire" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/fire/"
 						/>
 						<Boton
 							name="Water" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/water/"
 						/>
 						<Boton
 							name="Grass" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/grass/"
 						/>
 						<Boton
 							name="Electric" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/electric/"
 						/>
 						<Boton
 							name="Ice" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/ice/"
 						/>
 						<Boton
 							name="Dragon" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/dragon/"
 						/>
 						<Boton
 							name="Dark" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/dark/"
 						/>
 						<Boton
 							name="Fairy" 
-							setTipoPokemon={props.setTipoPokemon} 
-							tipoPokemon={props.tipoPokemon}
+							setTipoPokemon={props.setTipoPokemon}
 							tipo="type/fairy/"
 						/>
 					</ContenedorBoton>

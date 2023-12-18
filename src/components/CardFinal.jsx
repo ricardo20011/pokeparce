@@ -17,7 +17,7 @@ const CardFinal = (props) => {
 		if(props.data.abilities.length >= 2){
 			setSegundaHabilidadMayuscula(props.data.abilities[1].ability.name.toUpperCase());
 		}
-	},[])
+	},[props.data.abilities])
 	
 	
 	
@@ -47,7 +47,7 @@ const CardFinal = (props) => {
 			setHabilidad(respuesta);
 			//console.log(respuesta);
 		})
-	},[])
+	},[props.data.abilities,props.data.species.url])
 
 	useEffect(()=>{
 			if(especie !== false){
@@ -55,6 +55,7 @@ const CardFinal = (props) => {
 					if(idiomaEspecie.language.name === "es"){
 						setNombreEspecie(idiomaEspecie.genus);
 					}
+          return undefined;
 				});
 			}
 
@@ -70,6 +71,7 @@ const CardFinal = (props) => {
 					if(idioma.language.name === 'es'){
 						setDescripcionAtaque(idioma.flavor_text);
 					}
+          return undefined;
 				});
 			})
 		}
@@ -108,7 +110,7 @@ const CardFinal = (props) => {
 								alt="" 
 								style={{ display: loading ? 'none' : 'block' }}
 								/>
-							<img src={sombraPokemon} className="absolute bottom-2 z-10"/>
+							<img src={sombraPokemon} alt="" className="absolute bottom-2 z-10"/>
 						</div>
 						<div className="w-9/12 bg-[#115e59] text-center rounded-b-md">
 							<p className="text-[9px] py-1 text-white">Peso: {props.data.weight}kg Altura: {altura}cm Especie: {nombreEspecie !== false ? nombreEspecie : false} Nº{props.data.id}</p>
