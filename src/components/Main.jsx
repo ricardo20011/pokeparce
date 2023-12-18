@@ -22,7 +22,7 @@ const Main = () => {
 
 
 	useEffect(()=>{
-		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${indexUltimoPokemon}&offset=${indexPrimerPokemon}`)
+		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonesPorPagina}&offset=${indexPrimerPokemon}`)
 		.then((respuesta)=>{
 			if(respuesta.data && respuesta.data.results){
 				if(respuesta.status === 200){
