@@ -22,11 +22,13 @@ const Main = () => {
 
 
 	useEffect(()=>{
-		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonesPorPagina}&offset=${indexPrimerPokemon}`)
+		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${indexUltimoPokemon}&offset=${indexPrimerPokemon}`)
 		.then((respuesta)=>{
 			if(respuesta.data && respuesta.data.results){
 				if(respuesta.status === 200){
 					const pokemonUrl = respuesta.data.results.map((pokemon) => axios.get(pokemon.url));
+
+          console.log(respuesta.data.results);
 	
 					Promise.all(pokemonUrl)
 						.then((respuesta)=>{
@@ -40,7 +42,7 @@ const Main = () => {
 			})  
 	},[tipoPokemon,indexUltimoPokemon,indexPrimerPokemon]);    
 	
-  console.log(pokemon);
+  //console.log(pokemon);
 
 
 	
