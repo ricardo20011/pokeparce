@@ -12,45 +12,67 @@ const Main = () => {
 
 
   const [paginaActual, setPaginaActual] = useState(1);
-	const [pokemonesPorPagina, setPokemonesPorPagina] = useState(6);
+	const [pokemonesPorPagina, setPokemonesPorPagina] = useState(3);
 	
 	const [tipoPokemon, setTipoPokemon] = useState('pokemon/');
   
   const indexUltimoPokemon = paginaActual * pokemonesPorPagina;
   const indexPrimerPokemon = indexUltimoPokemon - pokemonesPorPagina;
-  const pokemones = pokemon?.slice(indexPrimerPokemon, indexUltimoPokemon);
+  //const pokemones = pokemon?.slice(indexPrimerPokemon, indexUltimoPokemon);
+
+  console.log('primer pokemon: ' + indexPrimerPokemon);
+  console.log('ultimo pokemon: ' + indexUltimoPokemon);
 
 
-	useEffect(()=>{
+
+// Utilizando expresión regular para extraer números después de la última barra diagonal
+
+useEffect(()=>{
 		axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${indexUltimoPokemon}&offset=${indexPrimerPokemon}`)
 		.then((respuesta)=>{
 			if(respuesta.data && respuesta.data.results){
 				if(respuesta.status === 200){
-					const pokemonUrl = respuesta.data.results.map((pokemon) => axios.get(pokemon.url));
+					const pokemonUrl = respuesta.data.results.map((pokemon) => {
+            const numerosEnURL = pokemon.url.match(/\/(\d+)\/$/);
+            //console.log(numerosEnURL);
+            
+            // Verificando si se encontraron números y mostrando el resultado
+            if (numerosEnURL && numerosEnURL[1]) {
+              const numeroExtraido = numerosEnURL[1];
 
-          console.log(respuesta.data.results);
+              if(numeroExtraido >= indexPrimerPokemon && numeroExtraido <= indexUltimoPokemon){
+                //console.log(numerosEnURL.input)
+                return axios.get(pokemon.url)
+              }
+            }
+            return null;
+          });
+          
+          Promise.all(pokemonUrl.filter(Boolean))
+          .then((respuesta) => {
+            setPokemon(respuesta);
+          })
+          .catch(error => {
+            console.error("Error al obtener datos de Pokémon", error);
+            // Manejar el error según sea necesario
+          });
+
+          //console.log(respuesta.data.results);
 	
-					Promise.all(pokemonUrl)
-						.then((respuesta)=>{
-							setPokemon(respuesta);
-						})  
-						.catch(error => console.log(error))
 					}  
 			}})    
 			.catch((error)=>{
 				console.log(error);
 			})  
-	},[tipoPokemon,indexUltimoPokemon,indexPrimerPokemon]);    
+	},[tipoPokemon,indexUltimoPokemon,indexPrimerPokemon, pokemonesPorPagina]);    
 	
   //console.log(pokemon);
 
 
 	
 	const handleInputPokemonPagina = (e) => {
-    setPokemonesPorPagina(e.target.value)
-		//setPokemonesPagina(parseInt(e.target.value));
-		//setPokemonInicioTipo(parseInt(e.target.value));
-		//console.log(pokemonesPagina);
+    setPokemonesPorPagina(parseInt(e.target.value, 10));
+    setPaginaActual(paginaActual);
 	}
 
   return(
@@ -79,7 +101,7 @@ const Main = () => {
 					</div>
 					<div className="w-full flex flex-wrap content-start justify-between">
 						{
-							pokemones.map((pokemonInfo)=>{
+							pokemon.map((pokemonInfo)=>{
 								return(
 									<Card
 										pokemon={pokemon}

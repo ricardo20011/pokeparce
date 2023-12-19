@@ -7,7 +7,7 @@ const Header = () => {
 		<div className="sticky flex items-center top-0 left-0 w-full bg-azulOscuro bg-opacity-20 backdrop-blur-sm h-18 mx-auto z-30">
 			<div className="3xl:w-10/12 5xl:w-8/12 mx-auto flex justify-between">
 				
-				<img className="w-72" src={IconoImagen} alt=""/>
+				<img className="w-72 opacity-5" src={IconoImagen} alt=""/>
 
 				<div className="w-96 flex items-center relative">
 					<input className="w-10/12 h-9 rounded-xl px-3 outline-none" type="text" name="" placeholder="Escribe nombre de pokemon..." id="" />

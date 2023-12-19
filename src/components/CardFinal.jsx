@@ -103,9 +103,7 @@ const CardFinal = (props) => {
 							{loading && <Icon className="loading-icon" icon="eos-icons:bubble-loading" color="green" width="50" />}
 							<img 
 								className="w-6/12 max-h-48 z-20" 
-								src={
-									props.data.sprites.other.dream_world.front_default
-								} 
+								src={props.data.sprites.other.dream_world.front_default} 
 								onLoad={() => setLoading(false)}
 								alt="" 
 								style={{ display: loading ? 'none' : 'block' }}
