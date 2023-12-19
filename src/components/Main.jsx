@@ -34,9 +34,7 @@ useEffect(()=>{
 				if(respuesta.status === 200){
 					const pokemonUrl = respuesta.data.results.map((pokemon) => {
             const numerosEnURL = pokemon.url.match(/\/(\d+)\/$/);
-            //console.log(numerosEnURL);
-            
-            // Verificando si se encontraron números y mostrando el resultado
+
             if (numerosEnURL && numerosEnURL[1]) {
               const numeroExtraido = numerosEnURL[1];
 
@@ -72,7 +70,7 @@ useEffect(()=>{
 	
 	const handleInputPokemonPagina = (e) => {
     setPokemonesPorPagina(parseInt(e.target.value, 10));
-    setPaginaActual(paginaActual);
+    setPaginaActual(1);
 	}
 
   return(
@@ -95,8 +93,6 @@ useEffect(()=>{
 							<option value={3}>3</option>
 							<option value={6}>6</option>
 							<option value={12}>12</option>
-							<option value={20}>20</option>
-							<option value={40}>40</option>
 						</select>
 					</div>
 					<div className="w-full flex flex-wrap content-start justify-between">
